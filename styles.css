@@ -402,7 +402,7 @@ select:focus {
 
 @media (max-width: 860px) {
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .booking-panel,
@@ -511,12 +511,13 @@ select:focus {
   }
 
   .table-badge {
-    padding: 5px 8px;
-    font-size: 0.68rem;
+    min-width: 0;
+    padding: 5px 6px;
+    font-size: 0.64rem;
   }
 
   .table-icon {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .table-name {
@@ -555,6 +556,7 @@ select:focus {
   }
 
   .game-check label {
+    flex: 1;
     min-height: 44px;
     padding: 8px 0;
   }
