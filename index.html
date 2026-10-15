@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BoardGame Booking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">BoardGame Lounge</p>
+          <h1>Table & Board Game Booking</h1>
+        </div>
+        <div class="pill">Open daily: 10:00 - 18:00</div>
+      </header>
+
+      <main class="layout">
+        <section class="panel booking-panel">
+          <div class="section-head">
+            <h2>Book a table</h2>
+            <button id="resetSelection" class="ghost-button" type="button">Clear selection</button>
+          </div>
+
+          <div class="filter-grid">
+            <label>
+              <span>Date</span>
+              <input id="bookingDate" type="date" />
+            </label>
+            <label>
+              <span>Time</span>
+              <select id="bookingTime"></select>
+            </label>
+            <label>
+              <span>Number of guests</span>
+              <input id="guestCount" type="number" min="2" max="6" value="4" />
+            </label>
+          </div>
+
+          <div id="tableGrid" class="table-grid" aria-live="polite"></div>
+        </section>
+
+        <aside class="panel summary-panel">
+          <h2>Booking details</h2>
+          <form id="bookingForm">
+            <label>
+              <span>Customer name</span>
+              <input id="customerName" type="text" placeholder="e.g. Anna" required />
+            </label>
+            <label>
+              <span>Phone number</span>
+              <input id="phoneNumber" type="tel" placeholder="081-234-5678" required />
+            </label>
+
+            <div class="selection-box">
+              <p class="label-title">Selected table</p>
+              <div id="selectedTableBox" class="selected-box empty">No table selected yet</div>
+            </div>
+
+            <div class="selection-box">
+              <p class="label-title">Selected board games</p>
+              <div id="selectedGameBox" class="selected-box empty">No game selected yet</div>
+            </div>
+
+            <div class="note-box">
+              <strong>Terms:</strong>
+              <ul>
+                <li>Booking duration: 1 hour</li>
+                <li>Large table: 6 seats, 1 table</li>
+                <li>Small tables: 4 seats, 4 tables</li>
+                <li>Service closes at 18:00</li>
+              </ul>
+            </div>
+
+            <button type="submit" class="primary-button">Confirm booking</button>
+          </form>
+        </aside>
+
+        <section class="panel games-panel">
+          <div class="section-head">
+            <h2>Available board games</h2>
+            <div class="count-badge"><span id="gameCount">0</span> games</div>
+          </div>
+          <div id="boardGameList" class="game-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
