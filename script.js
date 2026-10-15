@@ -3,7 +3,10 @@ const tables = [
   { id: "T2", name: "Small table (4 seats)", type: "small", capacity: 4, icon: "🛖" },
   { id: "T3", name: "Small table (4 seats)", type: "small", capacity: 4, icon: "🛖" },
   { id: "T4", name: "Small table (4 seats)", type: "small", capacity: 4, icon: "🛖" },
-  { id: "T5", name: "Small table (4 seats)", type: "small", capacity: 4, icon: "🛖" }
+  { id: "T5", name: "Small table (4 seats)", type: "small", capacity: 4, icon: "🛖" },
+  { id: "T6", name: "2-seat table 1", type: "small", capacity: 2, icon: "🪑" },
+  { id: "T7", name: "2-seat table 2", type: "small", capacity: 2, icon: "🪑" },
+  { id: "T8", name: "2-seat table 3", type: "small", capacity: 2, icon: "🪑" }
 ];
 
 const boardGames = [
