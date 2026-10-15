@@ -83,8 +83,12 @@
         <section class="panel games-panel">
           <div class="section-head">
             <h2>Available board games</h2>
-            <div class="count-badge"><span id="gameCount">0</span> games</div>
+            <div class="count-badge"><span id="gameCount">0</span> selected</div>
           </div>
+          <label class="game-search">
+            <span class="visually-hidden">Search board games</span>
+            <input id="gameSearch" type="search" placeholder="Search by game name or category" autocomplete="off" />
+          </label>
           <div id="boardGameList" class="game-list"></div>
         </section>
       </main>

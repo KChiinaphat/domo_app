@@ -65,6 +65,7 @@ const selectedGameBox = document.getElementById("selectedGameBox");
 const bookingForm = document.getElementById("bookingForm");
 const resetSelectionButton = document.getElementById("resetSelection");
 const gameCount = document.getElementById("gameCount");
+const gameSearchInput = document.getElementById("gameSearch");
 
 function loadBookings() {
   const saved = localStorage.getItem(storageKey);
@@ -164,7 +165,12 @@ function renderTables() {
 }
 
 function renderBoardGames() {
-  boardGameList.innerHTML = boardGames
+  const searchTerm = gameSearchInput.value.trim().toLowerCase();
+  const filteredGames = boardGames.filter((game) => {
+    return `${game.name} ${game.category} ${game.players}`.toLowerCase().includes(searchTerm);
+  });
+
+  boardGameList.innerHTML = filteredGames
     .map((game) => {
       const isSelected = state.selectedGames.has(game.id);
       return `
@@ -178,8 +184,8 @@ function renderBoardGames() {
             <span>Time: ${game.duration}</span>
           </div>
           <div class="game-check">
-            <label for="game-${game.id}">Select</label>
-            <input id="game-${game.id}" type="checkbox" data-game-id="${game.id}" ${isSelected ? "checked" : ""} />
+            <label for="game-${game.id}">Select game</label>
+            <input id="game-${game.id}" type="checkbox" data-game-id="${game.id}" aria-label="Select ${game.name}" ${isSelected ? "checked" : ""} />
           </div>
         </article>
       `;
@@ -187,6 +193,9 @@ function renderBoardGames() {
     .join("");
 
   gameCount.textContent = state.selectedGames.size;
+  if (filteredGames.length === 0) {
+    boardGameList.innerHTML = '<p class="empty-games">No games match your search.</p>';
+  }
 
   boardGameList.querySelectorAll("input[type='checkbox']").forEach((checkbox) => {
     checkbox.addEventListener("change", (event) => {
@@ -201,6 +210,8 @@ function renderBoardGames() {
     });
   });
 }
+
+gameSearchInput.addEventListener("input", renderBoardGames);
 
 function renderTableSummary() {
   if (!state.selectedTableId) {
